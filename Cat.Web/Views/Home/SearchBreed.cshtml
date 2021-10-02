@@ -1,0 +1,8 @@
+﻿@model IList<BreedModel>
+
+@foreach (var breed in Model)
+{
+    @Html.Partial("_Breed", breed)
+}
+
+

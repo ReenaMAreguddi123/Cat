@@ -1,0 +1,39 @@
+﻿@model IList<BreedModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Our Breeds</h1>
+    <form class="form-inline">
+        <input type="text" id="txtSearch" style="width: 30%" class="form-control" placeholder="Search for your favourite breed"/>&nbsp;
+        <button type="button" id="btnSearch" class="btn btn-secondary">Search</button>
+    </form>
+    <br/>
+    <br/>
+    <div class="row">
+        @foreach (var breed in Model)
+        {
+            @Html.Partial("_Breed", breed)
+        }
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnSearch').click(function () {
+            searchBreeds();
+        });
+
+        function searchBreeds() {
+            var url = "/Home/SearchBreed?breedName=" + $("#txtSearch").val();
+            $.get(url,
+                null,
+                function (data) {
+                    $(".row").html(data);
+                });
+        }   
+    });
+</script> 

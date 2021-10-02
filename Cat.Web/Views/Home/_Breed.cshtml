@@ -1,0 +1,24 @@
+﻿@model BreedModel
+<div class="col-md-4">
+    <div class="card mb-4 shadow-sm">
+        @if (Model.Image != null && !string.IsNullOrWhiteSpace(Model.Image.Url))
+        {
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="@Model.Image?.Url" data-holder-rendered="true">
+        }
+        else
+        {
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="#" data-holder-rendered="true">
+        }
+        <div class="card-body">
+            <p class="card-text">@Model.Name</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <a class="btn btn-secondary" target="_blank" href="@Model.WikipediaUrl" role="button">Wiki</a>
+                    <a class="btn btn-secondary" target="_blank" href="@Model.VetStreetUrl" role="button">Vet</a>
+                </div>
+                <small class="text-muted">@Model.Temperament</small>
+            </div>
+        </div>
+    </div>
+</div>
+
